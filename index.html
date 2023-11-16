@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Временной патруль фиолетовой лошадки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #clocks {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .clock {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            min-width: 150px;
+            text-align: center;
+        }
+        #work-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Временной патруль фиолетовой лошадки</h1>
+    
+    <div id="clocks">
+        <div class="clock" id="astana-clock">
+            <h2 style="font-size: 18px; font-weight: bold;">Сейчас (GMT+6)</h2>
+            <p style="color: red; font-size: 24px; font-weight: bold;"></p>
+        </div>
+        <div class="clock" id="volgograd-clock">
+            <h2 style="font-size: 18px; font-weight: bold;">Волгоград (GMT+3) {Катя}</h2>
+            <p style="color: red; font-size: 24px; font-weight: bold;"></p>
+        </div>
+    </div>
+
+    <div id="work-section">
+        <h2 style="font-size: 34px; font-weight: bold;">Работа</h2>
+        <div class="clock" id="est-clock">
+            <h3 style="font-size: 18px; font-weight: bold;">Нью-Йорк Североамериканское восточное время (EST) {Brandon}</h3>
+            <p style="color: red; font-size: 24px; font-weight: bold;"></p>
+        </div>
+        <div class="clock" id="la-clock">
+            <h3 style="font-size: 18px; font-weight: bold;">Лос-Анджелес (GMT-8) {Scion}</h3>
+            <p style="color: red; font-size: 24px; font-weight: bold;"></p>
+        </div>
+    </div>
+
+    <script>
+        function updateClock(timezone, elementId) {
+            const options = {
+                timeZone: timezone,
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                hour12: false,
+            };
+            const formatter = new Intl.DateTimeFormat('en-US', options);
+            const timeString = formatter.format(new Date());
+
+            document.getElementById(elementId).querySelector('p').innerText = timeString;
+        }
+
+        function updateAllClocks() {
+            updateClock('Asia/Almaty', 'astana-clock');
+            updateClock('America/New_York', 'est-clock');
+            updateClock('America/Los_Angeles', 'la-clock');
+            updateClock('Europe/Volgograd', 'volgograd-clock');
+        }
+
+        // Initial update
+        updateAllClocks();
+
+        // Update every second
+        setInterval(updateAllClocks, 1000);
+    </script>
+</body>
+</html>
