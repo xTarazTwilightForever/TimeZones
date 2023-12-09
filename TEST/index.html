@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Application role</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #333333;
+      }
+
+      .app-container {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        width: 80%;
+        max-width: 400px;
+        position: relative;
+      }
+
+      .app-header {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .app-buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .app-button {
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        cursor: pointer;
+        margin-top: 10px;
+        padding: 10px 20px;
+        transition: background-color 0.3s;
+      }
+
+      .app-button:hover {
+        background-color: #0056b3;
+      }
+
+      .app-text {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div role="application" class="app-container">
+      <div class="app-header">
+        Application with the "role" attribute set to "application".
+      </div>
+      <p class="app-text" role="status">
+        This is text that changes when different gestures are performed, the
+        status role tells the screen reader to read the text when it changes
+      </p>
+    </div>
+    <div class="app-buttons">
+      <button class="app-button" id="deactivateApp">Deactivate App</button>
+    </div>
+  </body>
+</html>
